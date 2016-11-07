@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PlayerForm from '../components/PlayerForm'
+import signUpUser from '../actions/sign-up-user'
 
 class SignUp extends Component {
   render () {
-    return <h1>Sign up</h1>
+    const { signUpUser } = this.props
+    return <PlayerForm signUp={true} onSubmit={ signUpUser } />
   }
 }
 
-export default SignUp
+export default connect(null, { signUpUser })(SignUp)
