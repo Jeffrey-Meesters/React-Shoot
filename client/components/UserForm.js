@@ -28,10 +28,9 @@ class UserForm extends Component {
       console.log('passwordConfirmation: ', (passwordConfirmation && passwordConfirmation.getValue()))
 
       const formData = {
-        name,
-        email,
-        password,
-        passwordConfirmation,
+        name: name && name.getValue(),
+        email: email.getValue(),
+        password: password.getValue(),
       }
 
       this.props.onSubmit(formData)

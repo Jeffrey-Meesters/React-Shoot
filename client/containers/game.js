@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-class NotFound extends Component {
+class Game extends Component {
   render() {
     return(
       <div className="not-found">
@@ -10,4 +10,4 @@ class NotFound extends Component {
   }
 }
 
-export default NotFound
+export default Game
