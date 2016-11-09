@@ -21,7 +21,7 @@ render(
         <IndexRoute component={Home} />
         <Route path="sign-in" component={SignIn} />
         <Route path="sign-up" component={SignUp} />
-        <Route path="game/:id" component={Game} />
+        <Route path="game/:gameId" component={Game} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
