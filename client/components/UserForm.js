@@ -3,13 +3,13 @@ import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
-import './PlayerForm.sass'
+import './UserForm.sass'
 
 const textFieldStyle = {
   width: '96%'
 }
 
-class PlayerForm extends Component {
+class UserForm extends Component {
   constructor() {
     super()
     this.state = {
@@ -28,10 +28,9 @@ class PlayerForm extends Component {
       console.log('passwordConfirmation: ', (passwordConfirmation && passwordConfirmation.getValue()))
 
       const formData = {
-        name,
-        email,
-        password,
-        passwordConfirmation,
+        name: name && name.getValue(),
+        email: email.getValue(),
+        password: password.getValue(),
       }
 
       this.props.onSubmit(formData)
@@ -120,4 +119,4 @@ class PlayerForm extends Component {
 }
 
 
-export default PlayerForm
+export default UserForm
