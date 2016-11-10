@@ -16,30 +16,29 @@ class Reaction extends Component {
   }
 
 getReactionTime(event) {
-  let reactionTime = Date.now();
-  console.log(reactionTime);
-  return reactionTime;
+  let reactionTime = localStorage.setItem('reactDate', Date.now());
+  let reactionTime2 = localStorage.getItem('reactDate');
+  console.log(reactionTime2);
 }
 
 getCreate(event) {
-  let create = Date.now();
-  console.log(create);
-  return create;
-
+  let create = localStorage.setItem('createDate', Date.now());
+  let create2 = localStorage.getItem('createDate');
+  console.log(create2);
 }
 
-reactionTimePlayer() {
-  let timePlayer = getReactionTime() - getCreate();
-  console.log(timePlayer);
-  return timePlayer;
-}
+
 
   render() {
     let content = <div className="Ready"> 'READY?!' </div>;
+    let start = this.getCreate.bind(this)
+    let reaction = this.getReactionTime.bind(this)
+
+    let timePlayer = localStorage.getItem('reactDate') - localStorage.getItem('createDate')
 
     if (this.state.React) {
       content = <img className="React-button" src = 'https://s3-us-west-2.amazonaws.com/chicagoview/icons/react-logo.png'
-                onClick={this.getReactionTime.bind(this)} onLoad={this.getCreate.bind(this)} />;
+                onClick={reaction} onLoad={start} />;
     }
     return (
       <div>
@@ -47,7 +46,7 @@ reactionTimePlayer() {
           {content}
         </div>
         <div className="time" >
-          Time: {this.reactionTimePlayer.bind(this)}
+        Reaction time: {timePlayer} ms
         </div>
       </div>
       );
