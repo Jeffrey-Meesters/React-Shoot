@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-
+import {connect} from 'react-redux'
+import saveGame from '../actions/update-game'
 import './Reaction.sass'
 
 class Reaction extends Component {
@@ -34,8 +35,8 @@ getCreate(event) {
     let content = <div className="Ready"> 'Get READY to click!' </div>;
     let start = this.getCreate.bind(this)
     let reaction = this.getReactionTime.bind(this)
-
-    let timePlayer = localStorage.getItem('reactDate') - localStorage.getItem('createDate')
+// ik heb dit getypt en hij doet iets
+    const {timePlayer} = (localStorage.getItem('reactDate') - localStorage.getItem('createDate')).saveGame
 
     if (this.state.React) {
       content = <img className="React-button" src = 'https://s3-us-west-2.amazonaws.com/chicagoview/icons/react-logo.png'
@@ -51,9 +52,13 @@ getCreate(event) {
         </div>
       </div>
       );
-
   }
 };
 
+const mapStateToProps = (state) => {
+  return {
+    timePlayer: state.currentUser.timePlayer,
+  }
+}
 
-export default Reaction
+export default connect(mapStateToProps, { saveGame })(Reaction)
