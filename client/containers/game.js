@@ -60,7 +60,7 @@ class Game extends Component {
         <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
         <p>Name: { game.players.map((player) => player.name) }</p>
           <div className="game-box">
-        { game.players.length > 1 ? <Reaction /> : 'Waiting for other player!'}
+         <Reaction />
             </div>
       </div>
     )
