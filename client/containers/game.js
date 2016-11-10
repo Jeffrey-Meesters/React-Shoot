@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes, Image } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import setUpGames from '../actions/setup-games'
@@ -7,6 +7,7 @@ import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import saveGame from '../actions/update-game'
+import Reaction from '../components/Reaction'
 import './Game.sass'
 
 const PLAYER_COLORS = ['#0f0', '#00f']
@@ -57,7 +58,10 @@ class Game extends Component {
       <div className="game">
         <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
         <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
-        { game.players.map((player) => player.name) }
+        <p>Name: { game.players.map((player) => player.name) }</p>
+          <div className="game-box">
+            <Reaction />
+            </div>
       </div>
     )
   }

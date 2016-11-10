@@ -29,8 +29,8 @@ class UserForm extends Component {
 
       const formData = {
         name: name && name.getValue(),
-        email: email.getValue(),
-        password: password.getValue(),
+        email: email && email.getValue(),
+        password: password && password.getValue(),
       }
 
       this.props.onSubmit(formData)
