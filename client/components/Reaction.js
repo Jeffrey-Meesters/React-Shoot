@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+
 import './Reaction.sass'
 
 class Reaction extends Component {
@@ -12,7 +13,7 @@ class Reaction extends Component {
 
     setTimeout(function () {
       thiz.setState({ React: true });
-    }, Math.random()*5000);
+    }, Math.random()*7000);
   }
 
 getReactionTime(event) {
@@ -30,7 +31,7 @@ getCreate(event) {
 
 
   render() {
-    let content = <div className="Ready"> 'READY?!' </div>;
+    let content = <div className="Ready"> 'Get READY to click!' </div>;
     let start = this.getCreate.bind(this)
     let reaction = this.getReactionTime.bind(this)
 
