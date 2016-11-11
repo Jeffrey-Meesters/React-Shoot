@@ -60,7 +60,7 @@ class Game extends Component {
         <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
         <p>Name: { game.players.map((player) => player.name) }</p>
           <div className="game-box">
-         <Reaction />
+         <Reaction  game = { game } currentPlayer={ game.players.reduce((currentPlayer, nextPlayer) => nextPlayer._id === currentUser._id) }/>
             </div>
       </div>
     )
