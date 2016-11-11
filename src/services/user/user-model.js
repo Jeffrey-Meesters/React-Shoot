@@ -14,8 +14,6 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   avatar: { type: String, required: false },
   reactionTime: { type: Number, required: false, 'deafault': [] },
-
-
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });
