@@ -7,10 +7,11 @@ class GameModel extends BaseModel {
       players: [],
       started: false,
       winner: null,
-      timePlayer: [],
+      startedAt: Date.now,
       createdAt: Date.now,
       updatedAt: Date.now,
       draw: false,
+      reactionTime: [],
     };
   }
 
