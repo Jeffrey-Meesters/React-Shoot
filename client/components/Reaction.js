@@ -39,7 +39,7 @@ getReaction(Event) {
   const { saveGame, game, currentPlayer } = this.props
   let reaction = Date.now() - game.startedAt
   const player2 = this.otherPlayer.bind(this)()
-  debugger
+
   !player2 ?
     saveGame(game, {players: [Object.assign({}, currentPlayer, { reactionTime: reaction })]}) :
     saveGame(game, {players: [player2].concat(Object.assign({}, currentPlayer, { reactionTime: reaction }))})
@@ -47,6 +47,7 @@ getReaction(Event) {
 
 
 render() {
+  const { currentPlayer,  game } = this.props
   let content = <div className="Ready"> 'Get READY to click!' </div>;
 
   if (this.state.React) {
@@ -60,7 +61,7 @@ render() {
         {content}
       </div>
       <div className="time" >
-      Reaction time: ms
+      Reaction time: {currentPlayer.reactionTime} ms
       </div>
     </div>
     );
