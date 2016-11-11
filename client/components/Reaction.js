@@ -14,12 +14,13 @@ componentDidMount() {
 
   setTimeout(function () {
     thiz.setState({ React: true });
-  }, Math.random()*7000);
+  }, Math.random()*6000);
 }
 
 componentDidUpdate(){
   const { game } = this.props
   console.log(game.players[0].reactionTime, game)
+  console.log(game.players[1].reactionTime, game)
 }
 getCreateLogo(Event) {
   event.preventDefault()
