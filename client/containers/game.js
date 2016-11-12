@@ -24,13 +24,6 @@ class Game extends Component {
       player.userId === currentUser._id).length > 0
   }
 
-  otherPlayer(){
-    const { currentPlayer, game } = this.props
-    return game.players.filter((player) => {
-      return player._id !== currentPlayer._id
-    })[0]
-  }
-
   canJoin() {
     if (this.isPlayer()) { return false }
     const { game } = this.props
@@ -85,7 +78,6 @@ const mapStateToProps = (state) => {
       return nextGame._id === state.currentGame ? nextGame : currentGame
     }, {}),
     currentUser: state.currentUser,
-    otherPlayer: state.otherPlayer,
   }
 }
 
