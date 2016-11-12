@@ -11,10 +11,14 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
 import signOutUser from '../actions/sign-out-user'
 import ActionHome from 'material-ui/svg-icons/action/home';
+import HardwareVideogameAsset from 'material-ui/svg-icons/hardware/videogame-asset';
+import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+
 
 class Header extends Component {
   renderMenu() {
     const { signOutUser, userName, signedIn } = this.props
+
 
     return (
       <IconMenu
@@ -22,7 +26,7 @@ class Header extends Component {
           <IconButton><MoreVertIcon /></IconButton>
         }
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}} >
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}>
         <MenuItem primaryText={ signedIn ? userName : 'Sign in' } onClick={ this.signIn.bind(this) } />
         <MenuItem primaryText={ signedIn ? 'Sign out' : 'Sign up' } onClick={ this.signUpOrOut.bind(this) } />
       </IconMenu>
@@ -48,11 +52,13 @@ class Header extends Component {
   }
 
   render() {
+    const iconStyles = {marginRight: 24,}
     return (
 
       <AppBar
-        title="This is not a MemoryGame"
-        iconElementLeft={ <IconButton onClick={ this.navigateHome }><ActionHome /></IconButton> }
+        style={{width: '100%', backgroundColor: '#000000',}}
+        title="Shooter"
+        iconElementLeft={ <IconButton onClick={ this.navigateHome }> <HardwareVideogameAsset color={blue500} style={iconStyles} /></IconButton> }
         iconElementRight={ this.renderMenu() }
       />
     )
