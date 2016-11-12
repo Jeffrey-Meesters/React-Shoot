@@ -24,7 +24,7 @@ componentDidUpdate(){
 }
 
 // as soon as the image renders store that time in p1Start or p2Start
-getCreateLogo(Event) {
+getCreateLogo(event) {
   event.preventDefault()
   const { saveGame, game } = this.props
   const now = new Date().getTime()
@@ -54,7 +54,7 @@ getReaction(event) {
 }
 
 render() {
-  const { game } = this.props
+  const { game, currentUser } = this.props
 
   // at default (state of React = false) render this content
   let content = <div className="Ready"> 'Get READY to click!' </div>;
@@ -74,7 +74,7 @@ render() {
       <div className="time" >
         {/* render reaction time and name of player 1 and player 2*/}
         Reaction time {game.players[0].name}: { game.p1Reaction } ms <br/>
-        Reaction time {game.players[1].name}: { game.p2Reaction } ms
+        Reaction time {game.players[1] ? game.players[1].name : 'Waiting for player...'}: { game.p2Reaction } ms
       </div>
       <div className="winner">
         winner is:  {game.p1Reaction > game.p2Reaction ? game.players[1].name : game.players[0].name }
