@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import saveGame from '../actions/update-game'
-import setUpGames from '../actions/setup-games'
 import './Reaction.sass'
 
 class Reaction extends Component {
@@ -15,11 +14,11 @@ componentDidMount() {
 
   setTimeout(function () {
     thiz.setState({ React: true });
-  }, Math.random()*6000);
+  }, Math.random()*7000);
 }
 
 componentDidUpdate(){
-  const { game } = this.props
+  const { game, currentPlayer } = this.props
   console.log(game.players[0].reactionTime, game)
 }
 getCreateLogo(Event) {
@@ -35,12 +34,10 @@ otherPlayer(){
     return player._id !== currentPlayer._id
   })[0]
 }
-
 getReaction(Event) {
   event.preventDefault()
   const { saveGame, game, currentPlayer } = this.props
   let reaction = Date.now() - game.startedAt
-
   const player2 = this.otherPlayer.bind(this)()
 
   !player2 ?
@@ -77,4 +74,4 @@ Reaction.propTypes = {
 }
 
 
-export default connect(null, { saveGame, setUpGames })(Reaction)
+export default connect(null, { saveGame })(Reaction)
