@@ -73,11 +73,11 @@ render() {
       </div>
       <div className="time" >
         {/* render reaction time and name of player 1 and player 2*/}
-        Reaction time {game.players[0].name}: { game.p1Reaction } ms <br/>
+        Reaction time {game.players[0] ? game.players[0].name : 'Waiting for player...'}: { game.p1Reaction } ms <br/>
         Reaction time {game.players[1] ? game.players[1].name : 'Waiting for player...'}: { game.p2Reaction } ms
       </div>
       <div className="winner">
-        winner is:  {game.p1Reaction > game.p2Reaction ? game.players[1].name : game.players[0].name }
+      winner is: {game.p2Reaction > game.p1Reaction ? game.players[1].name : game.players[0].name }
       </div>
     </div>
     );
