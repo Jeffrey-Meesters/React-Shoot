@@ -56,12 +56,12 @@ class Game extends Component {
 
     return(
       <div className="game">
-        <p>Is player: { this.isPlayer() ? 'Yes' : 'No' }</p>
-        <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
+        <p>{ this.isPlayer() ? true : false }</p>
+        <p>{ this.canJoin() ? true : false }</p>
         <p>Name: { game.players.map((player) => player.name) }</p>
-          <div className="game-box">
-         <Reaction  game = { game } currentUser={currentUser} />
-            </div>
+           <div className="game-box">
+                <Reaction  game = { game } currentUser={currentUser} />
+          </div>
       </div>
     )
   }

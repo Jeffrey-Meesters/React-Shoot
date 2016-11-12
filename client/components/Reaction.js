@@ -4,11 +4,11 @@ import saveGame from '../actions/update-game'
 import './Reaction.sass'
 
 class Reaction extends Component {
-
+// before mounting occurs set state of React to false
 componentWillMount(){
   this.setState({ React: false })
 }
-
+// component mounted after max 7 sec set React to true
 componentDidMount() {
   var thiz = this;
 
@@ -17,12 +17,13 @@ componentDidMount() {
   }, Math.random()*7000);
 }
 
+// everytime the game saves the component gets updated
 componentDidUpdate(){
   const { game } = this.props
-  console.log("componentDidUpdate")
-  // console.log(game.players[0].reactionTime, game)
+
 }
 
+// as soon as the image renders store that time in p1Start or p2Start
 getCreateLogo(Event) {
   event.preventDefault()
   const { saveGame, game } = this.props
@@ -34,11 +35,13 @@ getCreateLogo(Event) {
   }
 }
 
+// defining player one
 isPlayerOne(){
   const { game, currentUser } = this.props
   return game.players[0].userId === currentUser._id
 }
 
+// as soon as the image is clicked on store that time in p1Reaction or p2Reaction
 getReaction(event) {
   event.preventDefault()
   const { saveGame, game } = this.props
@@ -46,15 +49,17 @@ getReaction(event) {
   if(this.isPlayerOne()){
     saveGame(game, { p1Reaction: now - game.p1Start })
   } else {
-    console.log('Saving p2')
     saveGame(game, { p2Reaction: now - game.p2Start })
   }
 }
 
 render() {
   const { game } = this.props
+
+  // at default (state of React = false) render this content
   let content = <div className="Ready"> 'Get READY to click!' </div>;
 
+// at state of React = true render the image content with onLoad and onClick
   if (this.state.React) {
     content = <img className="React-button" src = 'https://s3-us-west-2.amazonaws.com/chicagoview/icons/react-logo.png'
             onLoad={this.getCreateLogo.bind(this)}  onClick={this.getReaction.bind(this)} />;
@@ -63,16 +68,21 @@ render() {
   return (
     <div>
       <div className="Random">
+        {/*this is where the the content gets rendered (? text : image)  */}
         {content}
       </div>
       <div className="time" >
-        Reaction time p1: { game.p1Reaction } ms
-        Reaction time p2: { game.p2Reaction } ms
+        {/* render reaction time and name of player 1 and player 2*/}
+        Reaction time {game.players[0].name}: { game.p1Reaction } ms <br/>
+        Reaction time {game.players[1].name}: { game.p2Reaction } ms
+      </div>
+      <div className="winner">
+        winner is:  {game.p1Reaction > game.p2Reaction ? game.players[1].name : game.players[0].name }
       </div>
     </div>
     );
-  }
-};
+  };
+}
 
 Reaction.propTypes = {
   game: PropTypes.object.isRequired
