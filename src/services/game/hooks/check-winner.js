@@ -11,21 +11,6 @@ module.exports = function(options) {
   options = Object.assign({}, defaults, options);
 
   return function(hook) {
-    const cards = hook.data.cards;
-    const turn = hook.data.turn;
 
-    const flippedCards = cards.filter((card) => (card.flipped))
-    if (flippedCards.length === 2) {
-      if (flippedCards[0].symbol === flippedCards[1].symbol) {
-        hook.data.players[turn].pairs.push(flippedCards[0].symbol)
-      } else {
-        const totalPlayers = hook.data.players.length
-        let nextTurn = turn + 1
-        if (nextTurn > totalPlayers - 1) {
-          nextTurn = 0
-        }
-        hook.data.turn = nextTurn
-      }
-    }
   };
 };
