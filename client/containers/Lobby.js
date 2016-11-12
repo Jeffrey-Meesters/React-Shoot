@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
+import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router'
 import Avatar from 'material-ui/Avatar';
 import {List, ListItem} from 'material-ui/List';
@@ -21,12 +22,14 @@ class Lobby extends Component {
         <RaisedButton label="Create Game" primary={ true } onClick={ createGame } />
         <List>
         { games.map((game) => {
-            return <ListItem key={ game._id }
+            return <ListItem
+              style={{width: '15%'}}
+              key={ game._id }
               primaryText={ `${ game.createdBy.name }'s Game` }
               leftAvatar={<Avatar src={ game.createdBy.avatar }/> }
-                rightIcon={
+              rightToggle={
                   <Link to={ `/game/${game._id}` }>
-                    <RaisedButton label="Join" />
+                    <FlatButton label="Join" />
                   </Link>
                 } />
               })}
