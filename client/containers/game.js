@@ -32,6 +32,7 @@ class Game extends Component {
 
   joinGame() {
     const { game, saveGame, currentUser } = this.props
+    debugger
     saveGame(game, { players: game.players.concat({
       userId: currentUser._id,
       name: currentUser.name,
@@ -60,7 +61,7 @@ class Game extends Component {
         <p>Can join: { this.canJoin() ? 'Yes' : 'No' }</p>
         <p>Name: { game.players.map((player) => player.name) }</p>
           <div className="game-box">
-         <Reaction  game = { game } currentPlayer={ game.players.reduce((currentPlayer, nextPlayer) => nextPlayer._id === currentUser._id) }/>
+         <Reaction  game = { game } currentUser={currentUser} />
             </div>
       </div>
     )

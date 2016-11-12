@@ -4,9 +4,9 @@ import saveGame from '../actions/update-game'
 import './Reaction.sass'
 
 class Reaction extends Component {
-constructor() {
-  super();
-  this.state = { React: false };
+
+componentWillMount(){
+  this.setState({ React: false })
 }
 
 componentDidMount() {
@@ -18,36 +18,41 @@ componentDidMount() {
 }
 
 componentDidUpdate(){
-  const { game, currentPlayer } = this.props
-  console.log(game.players[0].reactionTime, game)
+  const { game } = this.props
+  console.log("componentDidUpdate")
+  // console.log(game.players[0].reactionTime, game)
 }
+
 getCreateLogo(Event) {
   event.preventDefault()
   const { saveGame, game } = this.props
-  let startedAt = Date.now()
-  saveGame(game, {startedAt: startedAt })
+  const now = new Date().getTime()
+  if(this.isPlayerOne()){
+    saveGame(game, {p1Start: now })
+  } else {
+    saveGame(game, {p2Start: now })
+  }
 }
 
-otherPlayer(){
-  const { currentPlayer, game } = this.props
-  return game.players.filter((player) => {
-    return player._id !== currentPlayer._id
-  })[0]
+isPlayerOne(){
+  const { game, currentUser } = this.props
+  return game.players[0].userId === currentUser._id
 }
-getReaction(Event) {
+
+getReaction(event) {
   event.preventDefault()
-  const { saveGame, game, currentPlayer } = this.props
-  let reaction = Date.now() - game.startedAt
-  const player2 = this.otherPlayer.bind(this)()
-
-  !player2 ?
-    saveGame(game, {players: [Object.assign({}, currentPlayer, { reactionTime: reaction })]}) :
-    saveGame(game, {players: [player2].concat(Object.assign({}, currentPlayer, { reactionTime: reaction }))})
+  const { saveGame, game } = this.props
+  const now = new Date().getTime()
+  if(this.isPlayerOne()){
+    saveGame(game, { p1Reaction: now - game.p1Start })
+  } else {
+    console.log('Saving p2')
+    saveGame(game, { p2Reaction: now - game.p2Start })
+  }
 }
-
 
 render() {
-  const { currentPlayer,  game } = this.props
+  const { game } = this.props
   let content = <div className="Ready"> 'Get READY to click!' </div>;
 
   if (this.state.React) {
@@ -61,7 +66,8 @@ render() {
         {content}
       </div>
       <div className="time" >
-      Reaction time: {currentPlayer.reactionTime} ms
+        Reaction time p1: { game.p1Reaction } ms
+        Reaction time p2: { game.p2Reaction } ms
       </div>
     </div>
     );
@@ -69,8 +75,7 @@ render() {
 };
 
 Reaction.propTypes = {
-  game: PropTypes.object.isRequired,
-  currentPlayer: PropTypes.object.isRequired,
+  game: PropTypes.object.isRequired
 }
 
 

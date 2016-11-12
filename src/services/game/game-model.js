@@ -14,7 +14,7 @@ const playerSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'user' },
   color: { type: String, required: false },
   name: { type: String, required: true },
-  reactionTime: { type: Number, required: false},
+  reactionTime: { type: Number, required: false}
 });
 
 const gameSchema = new Schema({
@@ -24,6 +24,10 @@ const gameSchema = new Schema({
   startedAt: { type: Number, required: false},
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now },
+  p1Start: { type: Number, required: false },
+  p2Start: { type: Number, required: false },
+  p1Reaction: { type: Number, required: false},
+  p2Reaction: { type: Number, required: false},
   userId: { type: Schema.Types.ObjectId, ref: 'user' }
 });
 
