@@ -75,7 +75,7 @@ The actual reactiontime has a delay of 100 to 200 miliseconds.
 ![Image of Ready]
 (http://res.cloudinary.com/debyt5msz/image/upload/v1479894998/Schermafbeelding_2016-11-23_om_10.54.25_xjinyg.png)
 
-##The code
+##The code of the Reaction component
 
 ```javascript
 import React, { Component, PropTypes } from 'react'
