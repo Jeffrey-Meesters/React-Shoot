@@ -176,4 +176,4 @@ export default connect(null, { saveGame })(Reaction)
 ```
 #Confession to be made:
 Allthough I love the concept of React I (Jeffrey) found it very hard to use it in this way (fullstack with FeathersJs).
-I'd like to showcase this project here to show that I've worked with it, but I have a long way to go to fully understand this. From this project I learned that I understand the basic programming language (JavaScript) and make that work, but I needed a lot of help from @Stofstik and @Giuliogallerini to make it work as it does now.
+I'd like to showcase this project here to show that I've worked with it, but I have a long way to go to fully understand this. From this project I learned that I understand the basic programming language (JavaScript) and make that work, but I needed a lot of help from @stofstik and @giuliogallerini to make it work as it does now.
