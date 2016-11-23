@@ -41,3 +41,36 @@ $ feathers help                           # Show all commands
 ## Help
 
 For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
+
+----------------------------------------------------------------------------------------------------------------------------
+
+#React Shooter
+
+##Codaisseur week 6 - RealTime web with websockets
+
+This week was about learning to use **React** in combination with:
+- FeathersJs
+- WebPack
+- Redux
+
+We were set-up with a starter-kit which include the above and user authentication.
+On that we created our 2 player React Shooter app.
+
+##The app
+
+In our app you can create a game and join a game.
+Once you joined a game an image gets rendered between 0 and 7 seconds.
+You need to click on that image to have an reactiontime calculated.
+The actual reactiontime has a delay of 100 to 200 miliseconds.
+
+
+**Ready to click?**
+
+![Image of GetReady]
+(http://res.cloudinary.com/debyt5msz/image/upload/v1479894916/Schermafbeelding_2016-11-23_om_10.53.39_zzza4x.png)
+
+
+**Click!**
+
+![Image of Ready]
+(http://res.cloudinary.com/debyt5msz/image/upload/v1479894998/Schermafbeelding_2016-11-23_om_10.54.25_xjinyg.png)
